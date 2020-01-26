@@ -13,6 +13,9 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
@@ -102,6 +105,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1WB5X7v0ufS5zol691XEO03UNSb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -159,7 +163,7 @@
       <workItem from="1579606911169" duration="4224000" />
       <workItem from="1579690774403" duration="15458000" />
       <workItem from="1579992920665" duration="8132000" />
-      <workItem from="1580024948669" duration="4383000" />
+      <workItem from="1580024948669" duration="4987000" />
     </task>
     <servers />
   </component>
