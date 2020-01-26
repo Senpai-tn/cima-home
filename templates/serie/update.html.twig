@@ -1,0 +1,14 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+    <section role="main" class="content-body">
+        <div class="form-group">
+            <form action="/save/{{ serie.id }}" method="post">
+                Title :<input type="text" class="form-control" name="title" value="{{ serie.title }}">
+                Price :<input type="text" class="form-control" name="price" value="{{ serie.price }}">
+                Description :<input type="text" class="form-control" name="description" value="{{ serie.description }}">
+                <input type="submit" value="Save" class="btn btn-success">
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

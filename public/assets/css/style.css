@@ -1,0 +1,117 @@
+
+.notiff{
+  display: none;
+    position: fixed;
+    background: #ff3547ed;
+    /*height: 71px;*/
+    max-width: 270px;
+    top: 12px;
+    right: 12px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    padding: .84rem 2.14rem;
+    font-size: 17px;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    margin: .375rem;
+    border: 0;
+    -webkit-border-radius: .125rem;
+    border-radius: .125rem;
+    cursor: pointer;
+    /*text-transform: uppercase;*/
+    white-space: normal;
+    word-wrap: break-word;
+    color: #fff;
+    z-index: 999999;
+}
+.notiff:hover {
+    color: #fff;
+    background-color: #fb2e40;
+    border-color: #bd2130;
+    -webkit-box-shadow: 0 5px 11pselect2 form-controlx 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    outline: 0;
+}
+
+.select2 {
+    width: 100%!important;
+}
+
+
+
+/*recherche*/
+
+.input-group1 {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.input-group1 .form-control:first-child, .input-group-addon:first-child, .input-group-btn1:first-child>.btn, .input-group-btn1:first-child>.btn-group>.btn, .input-group-btn1:first-child>.dropdown-toggle, .input-group-btn1:last-child>.btn-group:not(:last-child)>.btn, .input-group-btn1:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%;
+    border-color: #d2d6de;
+}
+.input-group1 .form-control, .input-group-addon, .input-group-btn1 {
+    display: table-cell;
+}
+.input-group-sm>.form-control, .input-group-sm>.input-group-addon, .input-group-sm>.input-group-btn1>.btn {
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.input-group-btn1 {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+}
+.input-group-addon, .input-group-btn1 {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.input-group1 .form-control, .input-group-addon, .input-group-btn1 {
+    display: table-cell;
+}
+.box-header {
+    color: #444;
+    display: block;
+    padding: 20px;
+    position: relative;
+}
+.box-header>.box-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.input-group-btn1:last-child>.btn, .input-group-btn1:last-child>.btn-group {
+    z-index: 2;
+    margin-left: -1px;
+}
+.input-group-btn1 .btn {
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+}
+.input-group-sm>.form-control, .input-group-sm>.input-group-addon, .input-group-sm>.input-group-btn1>.btn {
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.btn-default {
+    background-color: #f4f4f4;
+    color: #444;
+    border-color: #ddd;
+}
+
+.btn-default:hover {
+    background-color: #e6e6e6;
+    color: #444;
+    border-color: #ddd;
+}

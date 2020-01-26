@@ -1,0 +1,16 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+    <section role="main" class="content-body">
+        <div class="form-group">
+            {{ form_start(form)   }}
+
+                {{ form_row(form.image,{'attr':{'accept':'image/*'}}) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control','placeholder':'Type the title'}}) }}
+                {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Type the price'}}) }}
+                {{ form_widget(form.language, {'attr': {'class': 'form-control','placeholder':'Type the language'}}) }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Type the description'}}) }}
+
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

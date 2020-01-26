@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/css/shop-homepage.css')}}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{{asset('assets/img/icons/favicon.ico') }}"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/font/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/animate/animate.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/css-hamburgers/hamburgers.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/select2/select2.min.css') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/main.css') }}">
+
+    {% endblock %}
+     <style>
+        span {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+         
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+         
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+        }
+         
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+         
+        p:hover {
+            cursor: pointer;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Cima@Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item 
+                {% if app.request.get("_route") == "home" %}
+                active
+                {% endif %}
+                ">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link 
+                    {% if app.request.get("_route") == "about" %}
+                         active
+                    {% endif %}
+                    " href="/about">About</a>
+                </li>
+                <li class="nav-item
+                {% if app.request.get("_route") == "contact" %}
+                         active
+                    {% endif %}
+                ">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item
+                {% if app.request.get("_route") == "cart" %}
+                         active
+                    {% endif %}
+                ">
+                    <a class="nav-link" href="/cart/show">Cart</a>
+                </li>
+                {% if app.user %}
+                <div class="dropdown">
+                <span>{{ app.user.username }}</span>
+                <div class="dropdown-content">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <p><a href="{{ path('admin') }}">Dashboard</a> </p>
+                    {% else %}
+                        <p><a href="/vendeur">Manage Series</a> </p>
+                    {% endif %}
+                    <p><a href="/logout">Logout</a> </p>
+
+                </div>
+                </div>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+               {% endif %}         
+                    
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+
+{% block body %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('assets/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('assets/vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('assets/vendor/select2/select2.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('assets/vendor/tilt/tilt.jquery.min.js')}}"></script>
+    <script >
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('assets/js/main.js')}}"></script>
+{% endblock %}
+</body>
+</html>

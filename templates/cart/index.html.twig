@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block title %}Cart{% endblock %}
+{% block body %}
+    {% set m = 0 %}
+    <center>
+        <div class="table-responsive-lg">
+            <table class="table">
+                <tr>
+                    <th>
+                        Quantity
+                    </th>
+
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Unit price (TND)
+                    </th>
+                    <th>
+                        price (TND)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+                {% for s in series %}
+                    <tr>
+                        <td>
+                            
+                            <div class="col-4">
+                            <!--  onchange="Substract('s.id',' s.price')" -->
+                                {{ cart[s.id] }}
+                            </div>
+                        </td>
+                        <td>
+                            {{ s.title }}
+                        </td>
+                        <td>
+                            {{ s.price }}
+                        </td>
+                        <td>
+                            <div class="col-4">
+                                <span id="p{{ s.id }}">{{ s.price   * cart[s.id] }}</span> 
+                            </div>
+                            {% set m = m+( s.price * cart[s.id])  %}
+                        </td>
+                        <td>
+                            <a href="{{ path('deleteFromCart',{'id':s.id}) }}" class="btn btn-danger"><img src={{ asset('assets/img/icons8-remove-100.png') }} width=35px></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <strong>Total :</strong> {{ m }} TND
+            <br>
+
+            {% if series|length > 0 %}
+                <a href="/check_out" class="btn btn-success">
+                    Check Out
+                </a>
+                <br>
+                <br>
+                <a href="{{ path('deleteCart') }}" class="btn btn-danger">
+                    <strong>Delete Cart</strong>
+                </a>
+
+            {% endif %}
+        </div>
+    </center>
+
+{% endblock %}

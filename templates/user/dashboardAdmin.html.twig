@@ -1,0 +1,149 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" ></script>
+    <section role="main" class="content-body">
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="row">
+            <div class="col-md-6">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="panel-actions">
+                            <a href="#" class="fa fa-caret-down"></a>
+                            <a href="#" class="fa fa-times"></a>
+                        </div>
+
+                        <h2 class="panel-title">List of Categories</h2>
+                    </header>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table mb-none">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for c in categories %}<tr>
+                                    <td>{{ c.id }}</td>
+                                    <td>{{ c.name }}</td>
+
+                                    <td class="actions">
+
+                                        <a href="{{ path("deleteCategory",{'id':c.id}) }}" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                                        <a href="{{ path("updateCategoryForm",{'id':c.id}) }}" ><img src="{{ asset('assets/img/update.png') }}" width="15px" title="update"></a>
+
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            {% if users|length > 0  %}
+                <div class="col-md-6">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <div class="panel-actions">
+                                <a href="#" class="fa fa-caret-down"></a>
+                                <a href="#" class="fa fa-times"></a>
+                            </div>
+
+                            <h2 class="panel-title">List of Purchasers</h2>
+                        </header>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table mb-none">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+
+                                        <th>Actions</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for us in users %}
+                                        <tr>
+                                            <td>{{ us.id }}</td>
+                                            <td {% if us.enabled != 1 %} style="text-decoration: line-through;" {% endif %}>{{ us.username }}</td>
+                                            <td {% if us.enabled != 1 %} style="text-decoration: line-through;" {% endif %}>{{ us.email }}</td>
+                                            <td>
+                                                <a href="/deleteUser/{{ us.id }}" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                            <td>
+                                                {% if us.enabled != 1 %}
+                                                    <a href="/enable/{{ us.id }}" class="btn btn-success" >enable</a>
+                                                {% else %}
+                                                    <a href="/disable/{{ us.id }}" class="btn btn-danger" >disable</a>
+                                                {% endif %}
+
+
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section></div>
+                </div>
+        <input type="hidden" id="users" value="{{ users|length }}">
+        <input type="hidden" id="categories" value="{{ categories|length }}">
+        <input type="hidden" id="series" value="{{ series|length }}">
+            <canvas id="myChart" width="auto" height="50%"></canvas>
+            <script>
+
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Products', 'Categories', 'Purchasers'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [$("#series").val(),$("#categories").val(),$("#users").val()],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)'
+
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)'
+
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+
+        {% endif %}
+        {% elseif is_granted('ROLE_USER') %}
+
+        {% else %}
+            Anonymous
+        {% endif %}
+    </section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+    <section role="main" class="content-body">
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <td>
+                        Username
+                    </td>
+
+                    <td>
+                        {{ app.user.username }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email
+                    </td>
+
+                    <td>
+                        {{ app.user.email }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last login at
+                    </td>
+
+                    <td>
+                        {{ app.user.lastLogin|date }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+    <section role="main" class="content-body">
+        <div class="form-group">
+            <form action="{{ path('updateCategory',{'id': c.id }) }}" method="post">
+                Name : <input type="text" class="form-control" name="name" value="{{ c.name }}" placeholder="Type the new name of category">
+                <input type="submit" value="Save" class="btn btn-success">
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

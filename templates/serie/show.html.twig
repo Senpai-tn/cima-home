@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{serie.title}}{% endblock %}
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+
+
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+
+                <div class="card mt-4">
+                    <img class="card-img-top img-fluid"  src="{{asset('assets/img/')}}{{serie.image}}" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title">{{serie.title}}</h3>
+                        <h4>{{serie.price}} TND</h4>
+                        <p class="card-text">{{serie.description}}</p>
+                    </div>
+                    <a href="/addcart/{{serie.id}}" class="btn btn-info">
+                        <div class="card-footer">
+                            <stong class="text-muted">Add to cart</stong>
+                        </div>
+                    </a>
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}

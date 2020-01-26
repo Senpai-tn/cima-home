@@ -1,0 +1,103 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}
+    Admin
+{% endblock %}
+{% block body %}
+
+    <section role="main" class="content-body">
+    {% if is_granted('ROLE_USER') %}
+        <div class="row">
+            <div class="col-md-6">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="panel-actions">
+                            <a href="#" class="fa fa-caret-down"></a>
+                            <a href="#" class="fa fa-times"></a>
+                        </div>
+
+                        <h2 class="panel-title">List of Series</h2>
+                    </header>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table mb-none">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Language</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for s in series %}<tr>
+                                    <td>{{ s.id }}</td>
+                                    <td>{{ s.title }}</td>
+                                    <td>{{ s.language }}</td>
+                                    <td>{{ s.price }}</td>
+                                    <td>{{ s.getCategory().name }}</td>
+                                    <td>{{ s.getDescription() }}</td>
+                                    <td class="actions">
+
+                                        <a href="/delete/{{ s.id }}" class="delete-row"><i class="fa fa-trash-o"></i></a>
+                                        <a href="/update/{{ s.id }}" ><img src="{{ asset('assets/img/update.png') }}" width="15px" title="update"></a>
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            {% if users|length > 0  %}
+            <div class="col-md-6">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="panel-actions">
+                            <a href="#" class="fa fa-caret-down"></a>
+                            <a href="#" class="fa fa-times"></a>
+                        </div>
+
+                        <h2 class="panel-title">List of Users</h2>
+                    </header>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table mb-none">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Type</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for us in users %}
+                                    <tr>
+                                        <td>{{ us.id }}</td>
+                                        <td>{{ us.username }}</td>
+                                        <td>{{ us.email }}</td>
+                                       
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section></div>
+        </div>
+        {% endif %}
+        {% elseif is_granted('ROLE_USER') %}
+
+                {% else %}
+                    Anonymous
+                {% endif %}
+    </section>
+{% endblock %}
